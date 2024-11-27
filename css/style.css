@@ -406,6 +406,7 @@ body {
 }
 .main-nav-link {
   font-weight: 300;
+  font-size: 24pt;
   letter-spacing: 1px;
 }
 @media screen and (max-width: 479px) {
