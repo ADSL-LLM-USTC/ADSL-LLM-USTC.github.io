@@ -14,7 +14,7 @@
 <meta property="og:description" content="We present the implementation of parameter-sharing for multiple requests of the same model and the idea of prefill and decode phase splitting on vLLM. SlidesYou can download the source file in PPT for">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-27T11:04:39.124Z">
-<meta property="article:modified_time" content="2024-11-28T03:27:37.891Z">
+<meta property="article:modified_time" content="2024-11-28T03:31:41.261Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -127,7 +127,7 @@
   const pdfUrl = '/ppt/request-level-sharing.pdf';  // PDF 文件的路径
   let pdfDoc = null;
   let currentPage = 1;
-  let scale = 1;  // 初始缩放比例，稍后会根据容器尺寸调整
+  let scale = 0.9;  // 初始缩放比例，稍后会根据容器尺寸调整
   const canvas = document.getElementById('pdfCanvas');
   const context = canvas.getContext('2d');
   const mainContainer = document.getElementById('post-meeting-24.11.26'); // 获取 #main 容器
@@ -228,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40r833y00003kig1hnf4q9b" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40rdbav0000poigc2dg69g9" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
