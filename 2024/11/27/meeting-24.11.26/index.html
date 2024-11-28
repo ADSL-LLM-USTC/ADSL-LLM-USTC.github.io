@@ -14,7 +14,7 @@
 <meta property="og:description" content="We present the implementation of parameter-sharing for multiple requests of the same model and the idea of prefill and decode phase splitting on vLLM. SlidesYou can download the source file in PPT for">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-27T11:04:39.124Z">
-<meta property="article:modified_time" content="2024-11-28T03:34:36.217Z">
+<meta property="article:modified_time" content="2024-11-28T03:38:51.269Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -127,7 +127,7 @@
   const pdfUrl = '/ppt/request-level-sharing.pdf';  // PDF 文件的路径
   let pdfDoc = null;
   let currentPage = 1;
-  let scale = 2;  // 初始缩放比例，稍后会根据容器尺寸调整
+  let scale = 1;  // 初始缩放比例，稍后会根据容器尺寸调整
   const canvas = document.getElementById('pdfCanvas');
   const context = canvas.getContext('2d');
   const mainContainer = document.getElementById('main'); // 获取 #main 容器
@@ -170,7 +170,7 @@
       // 计算适合容器的缩放比例
       const scaleX = containerWidth / pageWidth;
       const scaleY = containerHeight / pageHeight;
-      scale = Math.min(scaleX, scaleY); // 取较小的缩放比例，使得页面在容器内完全显示
+      scale = Math.min(scaleX-0.5, scaleY); // 取较小的缩放比例，使得页面在容器内完全显示
     });
   }
 
@@ -228,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40rh39r0000mcig6wjm3on2" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40rn0zb0000ggig4mz68mzu" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
