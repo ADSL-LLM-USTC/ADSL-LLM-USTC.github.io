@@ -94,8 +94,8 @@
         <p>We present the implementation of parameter-sharing for multiple requests of the same model and the idea of prefill and decode phase splitting on vLLM.</p>
 <h2 id="Slides"><a href="#Slides" class="headerlink" title="Slides"></a>Slides</h2><p>You can download the slides in PPT format from <a href="/ppt/request-level-sharing.pptx">here</a></p>
 <p>You can preview the slides in PDF format  online.</p>
-<!-- 点击查看 PDF 按钮 -->
-<p><button id="showPdfBtn">Click to view PDF</button></p>
+<!-- 美化后的按钮 -->
+<p><button id="showPdfBtn" class="pdf-button">Click to view PDF</button></p>
 <!-- 模态框 -->
 <div id="pdfModal" style="display:none;">
   <div id="pdfModalContent">
@@ -106,6 +106,35 @@
 
 <!-- 样式 -->
 <style>
+  /* 美化后的按钮 */
+  .pdf-button {
+    background-color: #007bff;  /* 蓝色背景 */
+    color: white;               /* 白色字体 */
+    border: none;               /* 去掉默认边框 */
+    padding: 12px 24px;         /* 增加按钮内边距 */
+    font-size: 16px;            /* 字体大小 */
+    font-weight: bold;          /* 加粗字体 */
+    text-align: center;         /* 居中文本 */
+    border-radius: 5px;         /* 圆角按钮 */
+    cursor: pointer;            /* 鼠标悬停变为手形 */
+    transition: all 0.3s ease;  /* 平滑过渡效果 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加按钮阴影 */
+  }
+
+  /* 鼠标悬停时的效果 */
+  .pdf-button:hover {
+    background-color: #0056b3;  /* 悬停时的深蓝色背景 */
+    transform: translateY(-2px); /* 向上轻微位移 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增强阴影效果 */
+  }
+
+  /* 鼠标按下时的效果 */
+  .pdf-button:active {
+    background-color: #004085;  /* 按下时的颜色 */
+    transform: translateY(0);   /* 恢复位移 */
+  }
+
+  /* 模态框背景 */
   #pdfModal {
     position: fixed;
     top: 0;
@@ -169,10 +198,11 @@
 </script>
 
 
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40u7chw0000voigeb09duuy" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40uagkg0000zcigeh77bspq" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
