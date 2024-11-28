@@ -14,7 +14,7 @@
 <meta property="og:description" content="We present the implementation of parameter-sharing for multiple requests of the same model and the idea of prefill and decode phase splitting on vLLM. SlidesYou can download the source file in PPT for">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-27T11:04:39.124Z">
-<meta property="article:modified_time" content="2024-11-28T03:24:23.123Z">
+<meta property="article:modified_time" content="2024-11-28T03:27:37.891Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -95,14 +95,14 @@
       
         <p>We present the implementation of parameter-sharing for multiple requests of the same model and the idea of prefill and decode phase splitting on vLLM.</p>
 <h2 id="Slides"><a href="#Slides" class="headerlink" title="Slides"></a>Slides</h2><p>You can download the source file in PPT format from <a href="/ppt/request-level-sharing.pptx">here</a></p>
-<h2>请输入 PDF 文件的密码进行预览</h2>
+<h2>Please enter the password of the PDF file to preview</h2>
 
 <form id="passwordForm">
-  <input type="password" id="pdfPasswordInput" placeholder="请输入 PDF 密码" required>
-  <button type="submit">验证</button>
+  <input type="password" id="pdfPasswordInput" placeholder="Please enter PDF password" required>
+  <button type="submit">submit</button>
 </form>
 
-<p id="errorMessage" style="color:red; display:none;">密码错误，请重新输入。</p>
+<p id="errorMessage" style="color:red; display:none;">Password is incorrect, please re-enter</p>
 
 <!-- 定义一个section容器 -->
 <section id="main" style="width: 100%; height: 600px; overflow: hidden;">
@@ -111,12 +111,12 @@
     <br>
     <div id="buttonContainer" style="display: flex; justify-content: space-between; width: 100%; margin-top: 10px;">
       <div>
-        <button id="prevPage" style="display:none;">上一页</button>
-        <button id="nextPage" style="display:none;">下一页</button>
+        <button id="prevPage" style="display:none;">prevPage</button>
+        <button id="nextPage" style="display:none;">nextPage</button>
       </div>
       <div>
-        <button id="zoomIn">放大</button>
-        <button id="zoomOut">缩小</button>
+        <button id="zoomIn">zoomIn</button>
+        <button id="zoomOut">zoomOut</button>
       </div>
     </div>
   </div>
@@ -130,7 +130,7 @@
   let scale = 1;  // 初始缩放比例，稍后会根据容器尺寸调整
   const canvas = document.getElementById('pdfCanvas');
   const context = canvas.getContext('2d');
-  const mainContainer = document.getElementById('article-inner'); // 获取 #main 容器
+  const mainContainer = document.getElementById('post-meeting-24.11.26'); // 获取 #main 容器
 
   // 监听密码表单提交
   document.getElementById('passwordForm').addEventListener('submit', function(event) {
@@ -228,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40r3zqc00006wig6zl3gcd4" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40r833y00003kig1hnf4q9b" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
