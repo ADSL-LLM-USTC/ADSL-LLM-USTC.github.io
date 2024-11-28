@@ -14,7 +14,7 @@
 <meta property="og:description" content="We present the implementation of parameter-sharing for multiple requests of the same model and the idea of prefill and decode phase splitting on vLLM. SlidesYou can download the source file in PPT for">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-27T11:04:39.124Z">
-<meta property="article:modified_time" content="2024-11-28T03:09:01.999Z">
+<meta property="article:modified_time" content="2024-11-28T03:17:20.792Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -104,32 +104,33 @@
 
 <p id="errorMessage" style="color:red; display:none;">密码错误，请重新输入。</p>
 
-<div id="pdfContainer" style="display:none;">
-  <canvas id="pdfCanvas"></canvas>
-  <br>
-  <!-- 按钮容器 -->
-  <div id="buttonContainer" style="display: flex; justify-content: space-between; width: 100%; margin-top: 10px;">
-    <!-- 翻页按钮 -->
-    <div>
-      <button id="prevPage" style="display:none;">上一页</button>
-      <button id="nextPage" style="display:none;">下一页</button>
-    </div>
-    <!-- 缩放按钮 -->
-    <div>
-      <button id="zoomIn">放大</button>
-      <button id="zoomOut">缩小</button>
+<!-- 定义一个section容器 -->
+<section id="main" style="width: 100%; height: 600px; overflow: hidden;">
+  <div id="pdfContainer" style="display:none;">
+    <canvas id="pdfCanvas"></canvas>
+    <br>
+    <div id="buttonContainer" style="display: flex; justify-content: space-between; width: 100%; margin-top: 10px;">
+      <div>
+        <button id="prevPage" style="display:none;">上一页</button>
+        <button id="nextPage" style="display:none;">下一页</button>
+      </div>
+      <div>
+        <button id="zoomIn">放大</button>
+        <button id="zoomOut">缩小</button>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
 <script>
   const pdfUrl = '/ppt/request-level-sharing.pdf';  // PDF 文件的路径
   let pdfDoc = null;
   let currentPage = 1;
-  let scale = 1.5;  // 初始缩放比例
+  let scale = 1;  // 初始缩放比例，稍后会根据容器尺寸调整
   const canvas = document.getElementById('pdfCanvas');
   const context = canvas.getContext('2d');
+  const mainContainer = document.getElementById('main'); // 获取 #main 容器
 
   // 监听密码表单提交
   document.getElementById('passwordForm').addEventListener('submit', function(event) {
@@ -143,6 +144,7 @@
     pdfjsLib.getDocument({ url: url, password: password }).promise
       .then(function(pdf) {
         pdfDoc = pdf;
+        calculateScale();  // 计算自适应缩放比例
         renderPage(currentPage);  // 渲染第一页
         document.getElementById('pdfContainer').style.display = 'block'; // 显示PDF容器
         document.getElementById('errorMessage').style.display = 'none'; // 隐藏错误信息
@@ -150,9 +152,26 @@
         document.getElementById('nextPage').style.display = 'inline-block'; // 显示“下一页”按钮
       })
       .catch(function(error) {
-        // PDF 解密失败，显示错误信息
-        document.getElementById('errorMessage').style.display = 'block';
+        document.getElementById('errorMessage').style.display = 'block'; // 显示密码错误信息
       });
+  }
+
+  // 根据 #main 容器的尺寸计算适合的缩放比例
+  function calculateScale() {
+    const containerWidth = mainContainer.clientWidth;
+    const containerHeight = mainContainer.clientHeight;
+
+    // 获取 PDF 的第一页
+    pdfDoc.getPage(1).then(function(page) {
+      const viewport = page.getViewport({ scale: 1 });
+      const pageWidth = viewport.width;
+      const pageHeight = viewport.height;
+
+      // 计算适合容器的缩放比例
+      const scaleX = containerWidth / pageWidth;
+      const scaleY = containerHeight / pageHeight;
+      scale = Math.min(scaleX, scaleY); // 取较小的缩放比例，使得页面在容器内完全显示
+    });
   }
 
   // 渲染指定页面
@@ -170,10 +189,8 @@
         viewport: viewport
       });
 
-      // 更新当前页面显示
       currentPage = pageNum;
 
-      // 控制翻页按钮的显示/隐藏
       document.getElementById('prevPage').style.display = currentPage > 1 ? 'inline-block' : 'none';
       document.getElementById('nextPage').style.display = currentPage < pdfDoc.numPages ? 'inline-block' : 'none';
     });
@@ -211,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40qk64g00007siggbz2gvpy" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40quvok0000w0iga67e5lhn" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
