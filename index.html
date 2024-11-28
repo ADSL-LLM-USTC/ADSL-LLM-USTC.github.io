@@ -92,148 +92,15 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>We present the implementation of parameter-sharing for multiple requests of the same model and the idea of prefill and decode phase splitting on vLLM.</p>
-<h2 id="Slides"><a href="#Slides" class="headerlink" title="Slides"></a>Slides</h2><p>You can download the slides in PPT format from <a href="/ppt/request-level-sharing.pptx">here</a>  👈</p>
-<p>
-You can also visit this blog to preview the slides in PDF format online 😀
-<br>
-<button id="showPdfBtn" class="pdf-button">Click to view PDF</button>
-</p>
-
-
-
-<!-- 模态框 -->
-
-<div id="pdfModal" style="display:none;">
-  <div id="pdfModalContent">
-    <!-- 美化后的关闭按钮 -->
-    <span id="closeBtn" class="close-btn" aria-label="Close">&times;</span>
-     <iframe src='/pdfjs/web/viewer.html?file=/ppt/request-level-sharing.pdf' width="100%" height="100%"></iframe>
-  </div>
-</div>
-
-
-<!-- 样式 -->
-<style>
-  /* 美化后的按钮 */
-  .pdf-button {
-    background-color: #007bff;  /* 蓝色背景 */
-    color: white;               /* 白色字体 */
-    border: none;               /* 去掉默认边框 */
-    padding: 12px 24px;         /* 增加按钮内边距 */
-    font-size: 16px;            /* 字体大小 */
-    font-weight: bold;          /* 加粗字体 */
-    text-align: center;         /* 居中文本 */
-    border-radius: 5px;         /* 圆角按钮 */
-    cursor: pointer;            /* 鼠标悬停变为手形 */
-    transition: all 0.3s ease;  /* 平滑过渡效果 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加按钮阴影 */
-  }
-
-  /* 鼠标悬停时的效果 */
-  .pdf-button:hover {
-    background-color: #0056b3;  /* 悬停时的深蓝色背景 */
-    transform: translateY(-2px); /* 向上轻微位移 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增强阴影效果 */
-  }
-
-  /* 鼠标按下时的效果 */
-  .pdf-button:active {
-    background-color: #004085;  /* 按下时的颜色 */
-    transform: translateY(0);   /* 恢复位移 */
-  }
-
-  /* 模态框背景 */
-  #pdfModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* 增加背景遮罩的透明度 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* 确保模态框在最上层 */
-  }
-
-  #pdfModalContent {
-    position: relative;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 90%;  /* 设置最大宽度为 90% */
-    max-height: 90%; /* 设置最大高度为 90% */
-    width: 80%;      /* 设置宽度为 80% */
-    height: 80%;     /* 设置高度为 80% */
-    overflow: hidden; /* 防止内容溢出 */
-  }
-
-  /* 美化后的关闭按钮 */
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 30px;
-    color: #333;
-    background-color: #f1f1f1; /* 浅灰色背景 */
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;  /* 圆形 */
-    text-align: center;
-    line-height: 40px;   /* 垂直居中 */
-    cursor: pointer;
-    transition: all 0.3s ease; /* 平滑过渡 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
-  }
-
-  /* 鼠标悬停时的效果 */
-  .close-btn:hover {
-    background-color: #ff6666;  /* 悬停时的红色背景 */
-    color: white;               /* 悬停时字体变白 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 加强阴影 */
-  }
-
-  /* 按下按钮时的效果 */
-  .close-btn:active {
-    background-color: #cc4444;  /* 按下时的背景颜色 */
-    transform: scale(0.95);      /* 按下时略微缩小 */
-  }
-
-  /* iframe 设置为填充容器 */
-  iframe {
-    border: none;  /* 去除 iframe 边框 */
-  }
-</style>
-
-<!-- 脚本 -->
-<script>
-  const showPdfBtn = document.getElementById('showPdfBtn');
-  const pdfModal = document.getElementById('pdfModal');
-  const closeBtn = document.getElementById('closeBtn');
-
-  // 点击按钮时显示模态框
-  showPdfBtn.addEventListener('click', function() {
-    pdfModal.style.display = 'flex'; // 显示模态框
-  });
-
-  // 点击关闭按钮时隐藏模态框
-  closeBtn.addEventListener('click', function() {
-    pdfModal.style.display = 'none'; // 隐藏模态框
-  });
-
-  // 点击模态框外部区域时关闭模态框
-  pdfModal.addEventListener('click', function(event) {
-    if (event.target === pdfModal) {
-      pdfModal.style.display = 'none'; // 隐藏模态框
-    }
-  });
-</script>
-
-
+        
+          <p class="article-more-link">
+            <a href="/2024/11/27/meeting-24.11.26/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adsl-llm-ustc.github.io/2024/11/27/meeting-24.11.26/" data-id="cm41349150003rgigg3au1puf" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://adsl-llm-ustc.github.io/2024/11/27/meeting-24.11.26/" data-id="cm416tqu70003jkig8y5x0zpp" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -268,147 +135,15 @@ You can also visit this blog to preview the slides in PDF format online 😀
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>We discuss the deployment and usage of MPS on the K8s framework, as well as how dynamic GPU sharing at the model level can be implemented based on MPS. </p>
-<h2 id="Slides"><a href="#Slides" class="headerlink" title="Slides"></a>Slides</h2><p>You can download the slides in PPT format from <a href="/ppt/mps_on_k8s_.pptx">here</a>  👈</p>
-<p>
-You can also visit this blog to preview the slides in PDF format online 😀
-<br>
-<button id="showPdfBtn" class="pdf-button">Click to view PDF</button>
-</p>
-
-
-<!-- 模态框 -->
-
-<div id="pdfModal" style="display:none;">
-  <div id="pdfModalContent">
-    <!-- 美化后的关闭按钮 -->
-    <span id="closeBtn" class="close-btn" aria-label="Close">&times;</span>
-      <iframe src='/pdfjs/web/viewer.html?file=/ppt/mps_on_k8s.pdf' width="100%" height="100%"></iframe>
-  </div>
-</div>
-
-
-<!-- 样式 -->
-<style>
-  /* 美化后的按钮 */
-  .pdf-button {
-    background-color: #007bff;  /* 蓝色背景 */
-    color: white;               /* 白色字体 */
-    border: none;               /* 去掉默认边框 */
-    padding: 12px 24px;         /* 增加按钮内边距 */
-    font-size: 16px;            /* 字体大小 */
-    font-weight: bold;          /* 加粗字体 */
-    text-align: center;         /* 居中文本 */
-    border-radius: 5px;         /* 圆角按钮 */
-    cursor: pointer;            /* 鼠标悬停变为手形 */
-    transition: all 0.3s ease;  /* 平滑过渡效果 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加按钮阴影 */
-  }
-
-  /* 鼠标悬停时的效果 */
-  .pdf-button:hover {
-    background-color: #0056b3;  /* 悬停时的深蓝色背景 */
-    transform: translateY(-2px); /* 向上轻微位移 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增强阴影效果 */
-  }
-
-  /* 鼠标按下时的效果 */
-  .pdf-button:active {
-    background-color: #004085;  /* 按下时的颜色 */
-    transform: translateY(0);   /* 恢复位移 */
-  }
-
-  /* 模态框背景 */
-  #pdfModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* 增加背景遮罩的透明度 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* 确保模态框在最上层 */
-  }
-
-  #pdfModalContent {
-    position: relative;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 90%;  /* 设置最大宽度为 90% */
-    max-height: 90%; /* 设置最大高度为 90% */
-    width: 80%;      /* 设置宽度为 80% */
-    height: 80%;     /* 设置高度为 80% */
-    overflow: hidden; /* 防止内容溢出 */
-  }
-
-  /* 美化后的关闭按钮 */
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 30px;
-    color: #333;
-    background-color: #f1f1f1; /* 浅灰色背景 */
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;  /* 圆形 */
-    text-align: center;
-    line-height: 40px;   /* 垂直居中 */
-    cursor: pointer;
-    transition: all 0.3s ease; /* 平滑过渡 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
-  }
-
-  /* 鼠标悬停时的效果 */
-  .close-btn:hover {
-    background-color: #ff6666;  /* 悬停时的红色背景 */
-    color: white;               /* 悬停时字体变白 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 加强阴影 */
-  }
-
-  /* 按下按钮时的效果 */
-  .close-btn:active {
-    background-color: #cc4444;  /* 按下时的背景颜色 */
-    transform: scale(0.95);      /* 按下时略微缩小 */
-  }
-
-  /* iframe 设置为填充容器 */
-  iframe {
-    border: none;  /* 去除 iframe 边框 */
-  }
-</style>
-
-<!-- 脚本 -->
-<script>
-  const showPdfBtn = document.getElementById('showPdfBtn');
-  const pdfModal = document.getElementById('pdfModal');
-  const closeBtn = document.getElementById('closeBtn');
-
-  // 点击按钮时显示模态框
-  showPdfBtn.addEventListener('click', function() {
-    pdfModal.style.display = 'flex'; // 显示模态框
-  });
-
-  // 点击关闭按钮时隐藏模态框
-  closeBtn.addEventListener('click', function() {
-    pdfModal.style.display = 'none'; // 隐藏模态框
-  });
-
-  // 点击模态框外部区域时关闭模态框
-  pdfModal.addEventListener('click', function(event) {
-    if (event.target === pdfModal) {
-      pdfModal.style.display = 'none'; // 隐藏模态框
-    }
-  });
-</script>
-
-
+        
+          <p class="article-more-link">
+            <a href="/2024/11/18/meeting-24.11.18/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adsl-llm-ustc.github.io/2024/11/18/meeting-24.11.18/" data-id="cm41349130001rgiggusb2g53" data-title="Model-level GPU sharing for serverless LLM serving" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://adsl-llm-ustc.github.io/2024/11/18/meeting-24.11.18/" data-id="cm416tqu50001jkig9mo8hy7v" data-title="Model-level GPU sharing for serverless LLM serving" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -443,148 +178,15 @@ You can also visit this blog to preview the slides in PDF format online 😀
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>Our presentation will cover the deployment of ServerlessLLM on K8s and the analysis of key metrics profiling.</p>
-<h2 id="Slides"><a href="#Slides" class="headerlink" title="Slides"></a>Slides</h2><p>You can download the slides in PPT format from <a href="/ppt/sllm_on_k8s.pptx">here</a>  👈</p>
-<p>
-You can also visit this blog to preview the slides in PDF format online 😀
-<br>
-<button id="showPdfBtn" class="pdf-button">Click to view PDF</button>
-</p>
-
-
-<!-- 模态框 -->
-
-<div id="pdfModal" style="display:none;">
-  <div id="pdfModalContent">
-    <!-- 美化后的关闭按钮 -->
-    <span id="closeBtn" class="close-btn" aria-label="Close">&times;</span>
-   <iframe src='/pdfjs/web/viewer.html?file=/ppt/sllm_on_k8s.pdf' width="100%" height="100%"></iframe>
-  </div>
-</div>
-
-
-
-<!-- 样式 -->
-<style>
-  /* 美化后的按钮 */
-  .pdf-button {
-    background-color: #007bff;  /* 蓝色背景 */
-    color: white;               /* 白色字体 */
-    border: none;               /* 去掉默认边框 */
-    padding: 12px 24px;         /* 增加按钮内边距 */
-    font-size: 16px;            /* 字体大小 */
-    font-weight: bold;          /* 加粗字体 */
-    text-align: center;         /* 居中文本 */
-    border-radius: 5px;         /* 圆角按钮 */
-    cursor: pointer;            /* 鼠标悬停变为手形 */
-    transition: all 0.3s ease;  /* 平滑过渡效果 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加按钮阴影 */
-  }
-
-  /* 鼠标悬停时的效果 */
-  .pdf-button:hover {
-    background-color: #0056b3;  /* 悬停时的深蓝色背景 */
-    transform: translateY(-2px); /* 向上轻微位移 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增强阴影效果 */
-  }
-
-  /* 鼠标按下时的效果 */
-  .pdf-button:active {
-    background-color: #004085;  /* 按下时的颜色 */
-    transform: translateY(0);   /* 恢复位移 */
-  }
-
-  /* 模态框背景 */
-  #pdfModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* 增加背景遮罩的透明度 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* 确保模态框在最上层 */
-  }
-
-  #pdfModalContent {
-    position: relative;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 90%;  /* 设置最大宽度为 90% */
-    max-height: 90%; /* 设置最大高度为 90% */
-    width: 80%;      /* 设置宽度为 80% */
-    height: 80%;     /* 设置高度为 80% */
-    overflow: hidden; /* 防止内容溢出 */
-  }
-
-  /* 美化后的关闭按钮 */
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 30px;
-    color: #333;
-    background-color: #f1f1f1; /* 浅灰色背景 */
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;  /* 圆形 */
-    text-align: center;
-    line-height: 40px;   /* 垂直居中 */
-    cursor: pointer;
-    transition: all 0.3s ease; /* 平滑过渡 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
-  }
-
-  /* 鼠标悬停时的效果 */
-  .close-btn:hover {
-    background-color: #ff6666;  /* 悬停时的红色背景 */
-    color: white;               /* 悬停时字体变白 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 加强阴影 */
-  }
-
-  /* 按下按钮时的效果 */
-  .close-btn:active {
-    background-color: #cc4444;  /* 按下时的背景颜色 */
-    transform: scale(0.95);      /* 按下时略微缩小 */
-  }
-
-  /* iframe 设置为填充容器 */
-  iframe {
-    border: none;  /* 去除 iframe 边框 */
-  }
-</style>
-
-<!-- 脚本 -->
-<script>
-  const showPdfBtn = document.getElementById('showPdfBtn');
-  const pdfModal = document.getElementById('pdfModal');
-  const closeBtn = document.getElementById('closeBtn');
-
-  // 点击按钮时显示模态框
-  showPdfBtn.addEventListener('click', function() {
-    pdfModal.style.display = 'flex'; // 显示模态框
-  });
-
-  // 点击关闭按钮时隐藏模态框
-  closeBtn.addEventListener('click', function() {
-    pdfModal.style.display = 'none'; // 隐藏模态框
-  });
-
-  // 点击模态框外部区域时关闭模态框
-  pdfModal.addEventListener('click', function(event) {
-    if (event.target === pdfModal) {
-      pdfModal.style.display = 'none'; // 隐藏模态框
-    }
-  });
-</script>
-
-
+        
+          <p class="article-more-link">
+            <a href="/2024/11/11/meeting-24.11.11/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adsl-llm-ustc.github.io/2024/11/11/meeting-24.11.11/" data-id="cm413490z0000rgig6erg2div" data-title="ServerlessLLM on K8s and Key Metrics Profiling" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://adsl-llm-ustc.github.io/2024/11/11/meeting-24.11.11/" data-id="cm416tqu60002jkigedkm21i5" data-title="ServerlessLLM on K8s and Key Metrics Profiling" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -619,149 +221,15 @@ You can also visit this blog to preview the slides in PDF format online 😀
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>We profile key metrics (e.g. TTFT, TPOT, Throughput, SM active, SM throughput, Mem throughput…) of LLMs under different configurations (e.g. Batch size, Prompt length…). </p>
-<h2 id="Slides"><a href="#Slides" class="headerlink" title="Slides"></a>Slides</h2><p>You can download the slides in PPT format from <a href="/ppt/key_metrics_profiling.pptx">here</a>  👈</p>
-<p>
-You can also visit this blog to preview the slides in PDF format online 😀
-<br>
-<button id="showPdfBtn" class="pdf-button">Click to view PDF</button>
-</p>
-
-
-<!-- 模态框 -->
-
-<div id="pdfModal" style="display:none;">
-  <div id="pdfModalContent">
-    <!-- 美化后的关闭按钮 -->
-    <span id="closeBtn" class="close-btn" aria-label="Close">&times;</span>
-    <iframe src='/pdfjs/web/viewer.html?file=/ppt/key_metrics_profiling.pdf' width="100%" height="100%"></iframe>
-  </div>
-</div>
-
-
-
-
-<!-- 样式 -->
-<style>
-  /* 美化后的按钮 */
-  .pdf-button {
-    background-color: #007bff;  /* 蓝色背景 */
-    color: white;               /* 白色字体 */
-    border: none;               /* 去掉默认边框 */
-    padding: 12px 24px;         /* 增加按钮内边距 */
-    font-size: 16px;            /* 字体大小 */
-    font-weight: bold;          /* 加粗字体 */
-    text-align: center;         /* 居中文本 */
-    border-radius: 5px;         /* 圆角按钮 */
-    cursor: pointer;            /* 鼠标悬停变为手形 */
-    transition: all 0.3s ease;  /* 平滑过渡效果 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加按钮阴影 */
-  }
-
-  /* 鼠标悬停时的效果 */
-  .pdf-button:hover {
-    background-color: #0056b3;  /* 悬停时的深蓝色背景 */
-    transform: translateY(-2px); /* 向上轻微位移 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增强阴影效果 */
-  }
-
-  /* 鼠标按下时的效果 */
-  .pdf-button:active {
-    background-color: #004085;  /* 按下时的颜色 */
-    transform: translateY(0);   /* 恢复位移 */
-  }
-
-  /* 模态框背景 */
-  #pdfModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* 增加背景遮罩的透明度 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* 确保模态框在最上层 */
-  }
-
-  #pdfModalContent {
-    position: relative;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 90%;  /* 设置最大宽度为 90% */
-    max-height: 90%; /* 设置最大高度为 90% */
-    width: 80%;      /* 设置宽度为 80% */
-    height: 80%;     /* 设置高度为 80% */
-    overflow: hidden; /* 防止内容溢出 */
-  }
-
-  /* 美化后的关闭按钮 */
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 30px;
-    color: #333;
-    background-color: #f1f1f1; /* 浅灰色背景 */
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;  /* 圆形 */
-    text-align: center;
-    line-height: 40px;   /* 垂直居中 */
-    cursor: pointer;
-    transition: all 0.3s ease; /* 平滑过渡 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
-  }
-
-  /* 鼠标悬停时的效果 */
-  .close-btn:hover {
-    background-color: #ff6666;  /* 悬停时的红色背景 */
-    color: white;               /* 悬停时字体变白 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 加强阴影 */
-  }
-
-  /* 按下按钮时的效果 */
-  .close-btn:active {
-    background-color: #cc4444;  /* 按下时的背景颜色 */
-    transform: scale(0.95);      /* 按下时略微缩小 */
-  }
-
-  /* iframe 设置为填充容器 */
-  iframe {
-    border: none;  /* 去除 iframe 边框 */
-  }
-</style>
-
-<!-- 脚本 -->
-<script>
-  const showPdfBtn = document.getElementById('showPdfBtn');
-  const pdfModal = document.getElementById('pdfModal');
-  const closeBtn = document.getElementById('closeBtn');
-
-  // 点击按钮时显示模态框
-  showPdfBtn.addEventListener('click', function() {
-    pdfModal.style.display = 'flex'; // 显示模态框
-  });
-
-  // 点击关闭按钮时隐藏模态框
-  closeBtn.addEventListener('click', function() {
-    pdfModal.style.display = 'none'; // 隐藏模态框
-  });
-
-  // 点击模态框外部区域时关闭模态框
-  pdfModal.addEventListener('click', function(event) {
-    if (event.target === pdfModal) {
-      pdfModal.style.display = 'none'; // 隐藏模态框
-    }
-  });
-</script>
-
-
+        
+          <p class="article-more-link">
+            <a href="/2024/11/04/meeting-24.11.4/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adsl-llm-ustc.github.io/2024/11/04/meeting-24.11.4/" data-id="cm41349140002rgiggrs44owb" data-title="Key metrics profiling of LLMs under different configurations" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://adsl-llm-ustc.github.io/2024/11/04/meeting-24.11.4/" data-id="cm416tqu20000jkigg25f8ftu" data-title="Key metrics profiling of LLMs under different configurations" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
