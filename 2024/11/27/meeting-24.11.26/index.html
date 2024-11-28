@@ -14,7 +14,7 @@
 <meta property="og:description" content="We present the implementation of parameter-sharing for multiple requests of the same model and the idea of prefill and decode phase splitting on vLLM. SlidesYou can download the source file in PPT for">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-27T11:04:39.124Z">
-<meta property="article:modified_time" content="2024-11-28T03:02:36.469Z">
+<meta property="article:modified_time" content="2024-11-28T03:09:01.999Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -107,11 +107,19 @@
 <div id="pdfContainer" style="display:none;">
   <canvas id="pdfCanvas"></canvas>
   <br>
-  <button id="prevPage" style="display:none;">上一页</button>
-  <button id="nextPage" style="display:none;">下一页</button>
-  <br>
-  <button id="zoomIn">放大</button>
-  <button id="zoomOut">缩小</button>
+  <!-- 按钮容器 -->
+  <div id="buttonContainer" style="display: flex; justify-content: space-between; width: 100%; margin-top: 10px;">
+    <!-- 翻页按钮 -->
+    <div>
+      <button id="prevPage" style="display:none;">上一页</button>
+      <button id="nextPage" style="display:none;">下一页</button>
+    </div>
+    <!-- 缩放按钮 -->
+    <div>
+      <button id="zoomIn">放大</button>
+      <button id="zoomOut">缩小</button>
+    </div>
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
@@ -119,7 +127,7 @@
   const pdfUrl = '/ppt/request-level-sharing.pdf';  // PDF 文件的路径
   let pdfDoc = null;
   let currentPage = 1;
-  let scale = 1;  // 初始缩放比例，后续会根据容器尺寸动态计算
+  let scale = 1.5;  // 初始缩放比例
   const canvas = document.getElementById('pdfCanvas');
   const context = canvas.getContext('2d');
 
@@ -127,8 +135,6 @@
   document.getElementById('passwordForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const password = document.getElementById('pdfPasswordInput').value;
-
-    // 尝试加载并解密 PDF 文件
     loadPDF(pdfUrl, password);
   });
 
@@ -149,20 +155,10 @@
       });
   }
 
-  // 渲染指定页面并使其自适应容器大小
+  // 渲染指定页面
   function renderPage(pageNum) {
     if (pdfDoc === null) return;
 
-    const container = document.getElementById('pdfContainer');
-    const containerWidth = container.offsetWidth;  // 获取容器宽度
-    const containerHeight = container.offsetHeight;  // 获取容器高度
-
-    // 计算适应容器的缩放比例
-    const scaleWidth = containerWidth / pdfDoc.getPage(1).getViewport({ scale: 1 }).width;
-    const scaleHeight = containerHeight / pdfDoc.getPage(1).getViewport({ scale: 1 }).height;
-    scale = Math.min(scaleWidth, scaleHeight);  // 选择合适的缩放比例
-
-    // 使用计算得到的缩放比例来渲染页面
     pdfDoc.getPage(pageNum).then(function(page) {
       const viewport = page.getViewport({ scale: scale });
 
@@ -210,18 +206,12 @@
       renderPage(currentPage);  // 重新渲染当前页
     }
   });
-
-  // 窗口大小变化时重新调整 PDF 缩放
-  window.addEventListener('resize', function() {
-    renderPage(currentPage);  // 重新渲染当前页，调整缩放比例
-  });
 </script>
-
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40qbxp600009cig5k9x5u0z" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40qk64g00007siggbz2gvpy" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
