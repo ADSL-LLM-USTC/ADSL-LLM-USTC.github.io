@@ -125,10 +125,10 @@
   const pdfUrl = '/ppt/request-level-sharing.pdf';  // PDF 文件的路径
   let pdfDoc = null;
   let currentPage = 1;
-  let scale = 0.9;  // 初始缩放比例，稍后会根据容器尺寸调整
+  let scale = 2;  // 初始缩放比例，稍后会根据容器尺寸调整
   const canvas = document.getElementById('pdfCanvas');
   const context = canvas.getContext('2d');
-  const mainContainer = document.getElementById('post-meeting-24.11.26'); // 获取 #main 容器
+  const mainContainer = document.getElementById('main'); // 获取 #main 容器
 
   // 监听密码表单提交
   document.getElementById('passwordForm').addEventListener('submit', function(event) {
@@ -226,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40rdbav0000poigc2dg69g9" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40rh39r0000mcig6wjm3on2" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
