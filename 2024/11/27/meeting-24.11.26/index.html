@@ -14,7 +14,7 @@
 <meta property="og:description" content="We present the implementation of parameter-sharing for multiple requests of the same model and the idea of prefill and decode phase splitting on vLLM. SlidesYou can download the source file in PPT for">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-27T11:04:39.124Z">
-<meta property="article:modified_time" content="2024-11-28T02:17:24.569Z">
+<meta property="article:modified_time" content="2024-11-28T02:47:22.484Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -94,14 +94,70 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>We present the implementation of parameter-sharing for multiple requests of the same model and the idea of prefill and decode phase splitting on vLLM.</p>
-<h2 id="Slides"><a href="#Slides" class="headerlink" title="Slides"></a>Slides</h2><p>You can download the source file in PPT format from [here</p>
-<h1>请下载文件</h1>  <p>请输入密码以下载文件：</p>  <form id="passwordForm">   <input type="password" id="passwordInput" placeholder="输入密码" required>   <button type="submit">验证</button> </form>  <div id="error" style="color:red; display:none;">密码错误，请重新输入。</div>  <div id="downloadLink" style="display:none;">   <a href="/ppt/request-level-sharing.pdf" download>点击这里下载文件</a> </div>  <script>   document.getElementById('passwordForm').addEventListener('submit', function(event) {     event.preventDefault();  // 阻止表单默认提交行为          var password = document.getElementById('passwordInput').value;          if (password === 'adsl@llm') {  // 你可以替换 'yourpassword' 为你希望的密码       document.getElementById('error').style.display = 'none';       document.getElementById('downloadLink').style.display = 'block';     } else {       document.getElementById('error').style.display = 'block';     }   }); </script>
+<h2 id="Slides"><a href="#Slides" class="headerlink" title="Slides"></a>Slides</h2><p>You can download the source file in PPT format from <a href="/ppt/request-level-sharing.pptx">here</a></p>
+<h2>请输入 PDF 文件的密码进行预览</h2>
 
+<form id="passwordForm">
+  <input type="password" id="pdfPasswordInput" placeholder="请输入 PDF 密码" required>
+  <button type="submit">验证</button>
+</form>
+
+<p id="errorMessage" style="color:red; display:none;">密码错误，请重新输入。</p>
+
+<div id="pdfContainer" style="display:none;">
+  <canvas id="pdfCanvas"></canvas>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+<script>
+  const pdfUrl = '/ppt/request-level-sharing.pdf';  // PDF 文件的路径
+  const canvas = document.getElementById('pdfCanvas');
+  const context = canvas.getContext('2d');
+
+  document.getElementById('passwordForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const password = document.getElementById('pdfPasswordInput').value;
+
+    // 尝试加载并解密 PDF 文件
+    loadPDF(pdfUrl, password);
+  });
+
+  function loadPDF(url, password) {
+    pdfjsLib.getDocument({ url: url, password: password }).promise
+      .then(function(pdf) {
+        // PDF 解密成功，开始渲染第一页
+        renderPage(pdf, 1);
+      })
+      .catch(function(error) {
+        // PDF 解密失败，显示错误信息
+        document.getElementById('errorMessage').style.display = 'block';
+      });
+  }
+
+  function renderPage(pdf, pageNum) {
+    pdf.getPage(pageNum).then(function(page) {
+      const scale = 1.5;
+      const viewport = page.getViewport({ scale: scale });
+
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      page.render({
+        canvasContext: context,
+        viewport: viewport
+      });
+
+      // 显示 PDF 渲染区域
+      document.getElementById('pdfContainer').style.display = 'block';
+      document.getElementById('errorMessage').style.display = 'none';
+    });
+  }
+</script>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40opxmu0000g0ig7p9o0zy4" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/11/27/meeting-24.11.26/" data-id="cm40ptjlc0000e8ig3d4b55rp" data-title="Requset-level GPU sharing on vLLM" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
