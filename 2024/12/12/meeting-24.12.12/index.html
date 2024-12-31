@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Model-level GPU sharing for serverless LLM serving | USTC ADSL LLM Group Blog</title>
+  <title>Serverless LLM inference for multiple LLMs serving | USTC ADSL LLM Group Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="We discuss the deployment and usage of MPS on the K8s framework, as well as how dynamic GPU sharing at the model level can be implemented based on MPS.">
+  <meta name="description" content="We present the topic of  “Serverless LLM inference for multiple LLMs serving”">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Model-level GPU sharing for serverless LLM serving">
-<meta property="og:url" content="https://adsl-llm-ustc.github.io/2024/11/18/meeting-24.11.18/index.html">
+<meta property="og:title" content="Serverless LLM inference for multiple LLMs serving">
+<meta property="og:url" content="https://adsl-llm-ustc.github.io/2024/12/12/meeting-24.12.12/index.html">
 <meta property="og:site_name" content="USTC ADSL LLM Group Blog">
-<meta property="og:description" content="We discuss the deployment and usage of MPS on the K8s framework, as well as how dynamic GPU sharing at the model level can be implemented based on MPS.">
+<meta property="og:description" content="We present the topic of  “Serverless LLM inference for multiple LLMs serving”">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-18T01:00:00.000Z">
-<meta property="article:modified_time" content="2024-11-28T10:47:31.051Z">
+<meta property="article:published_time" content="2024-12-12T01:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-31T04:10:47.740Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -71,10 +71,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-meeting-24.11.18" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-meeting-24.12.12" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/11/18/meeting-24.11.18/" class="article-date">
-  <time class="dt-published" datetime="2024-11-18T01:00:00.000Z" itemprop="datePublished">2024-11-18</time>
+    <a href="/2024/12/12/meeting-24.12.12/" class="article-date">
+  <time class="dt-published" datetime="2024-12-12T01:00:00.000Z" itemprop="datePublished">2024-12-12</time>
 </a>
     
   </div>
@@ -85,7 +85,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Model-level GPU sharing for serverless LLM serving
+      Serverless LLM inference for multiple LLMs serving
     </h1>
   
 
@@ -93,15 +93,16 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>We discuss the deployment and usage of MPS on the K8s framework, as well as how dynamic GPU sharing at the model level can be implemented based on MPS. </p>
+        <p>We present the topic of  “Serverless LLM inference for multiple LLMs serving”</p>
 <span id="more"></span>
 
-<h2 id="Slides"><a href="#Slides" class="headerlink" title="Slides"></a>Slides</h2><p>You can download the slides in PPT format from <a href="/ppt/mps_on_k8s_.pptx">here</a>  👈</p>
+<h2 id="Slides"><a href="#Slides" class="headerlink" title="Slides"></a>Slides</h2><p>You can download the slides in PPT format from <a href="/ppt/serverless_LLM_serving-12-12.pptx">here</a>  👈</p>
 <p>
 You can also preview the slides in PDF format ONLINE 😀
 <br>
 <button id="showPdfBtn" class="pdf-button">Click to view PDF</button>
 </p>
+
 
 
 <!-- 模态框 -->
@@ -110,7 +111,7 @@ You can also preview the slides in PDF format ONLINE 😀
   <div id="pdfModalContent">
     <!-- 美化后的关闭按钮 -->
     <span id="closeBtn" class="close-btn" aria-label="Close">&times;</span>
-      <iframe src='/pdfjs/web/viewer.html?file=/ppt/mps_on_k8s.pdf' width="100%" height="100%"></iframe>
+     <iframe src='/pdfjs/web/viewer.html?file=/ppt/serverless_LLM_serving-12-12.pdf' width="100%" height="100%"></iframe>
   </div>
 </div>
 
@@ -236,7 +237,7 @@ You can also preview the slides in PDF format ONLINE 😀
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adsl-llm-ustc.github.io/2024/11/18/meeting-24.11.18/" data-id="cm5byfk780004ucigevdndel6" data-title="Model-level GPU sharing for serverless LLM serving" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://adsl-llm-ustc.github.io/2024/12/12/meeting-24.12.12/" data-id="cm5byfk770003ucig8dvr8vw5" data-title="Serverless LLM inference for multiple LLMs serving" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -246,19 +247,19 @@ You can also preview the slides in PDF format ONLINE 😀
     
 <nav id="article-nav">
   
-    <a href="/2024/11/27/meeting-24.11.26/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2024/12/31/meeting-24.12.31/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Requset-level GPU sharing on vLLM
+          Evaluation of Model-level and Phase-level GPU Sharing for Multiple LLMs Serving
         
       </div>
     </a>
   
   
-    <a href="/2024/11/11/meeting-24.11.11/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2024/11/27/meeting-24.11.26/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">ServerlessLLM on K8s and Key Metrics Profiling</div>
+      <div class="article-nav-title">Requset-level GPU sharing on vLLM</div>
     </a>
   
 </nav>
